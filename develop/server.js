@@ -27,7 +27,31 @@ app.get('/api/notes', (req, res) =>
    }
 ));
 
-app.post('/api/notes', (req, res))
+app.post('/api/notes', (req, res) => {
+    console.log(`${req.method} request received to add a new note`)
+
+    const {title, text} = req.body;
+    if (title && text) {
+        const newNote= {
+            title,
+            text,
+            // feedback_id:
+        };
+        const response= {
+            status: "success",
+            body: newNote,
+        };
+        console.log(response)
+        res.status(201).json(response);
+    }else{
+        res.status(500).json('Error in posting new note')
+    }
+    fs.appendFile('./db/db.json', newNote, function(err) {
+        if(err) 
+    })
+
+}
+)
 
 app.get('*', (req, res) =>
     res.sendFile(path.join(__dirname, './public/index.html')
