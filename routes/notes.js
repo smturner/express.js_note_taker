@@ -9,7 +9,7 @@ var shortid = require('shortid');
 
 // router.use('../db/db.json', db)
 router.get('/notes', (req, res) => {
-  readTheFile('../db/db.json', "utf8", (err, data) => {
+  readTheFile('./db/db.json', "utf8", (err, data) => {
     res.json(JSON.parse(data))
     if (err) throw err;
     console.log(data)
@@ -26,7 +26,7 @@ router.post('/notes', (req, res) => {
             id: shortid.generate()  
         };
         console.log(newNote)
-        getNotes(newNote, '../db/db.json');
+        getNotes(newNote, './db/db.json');
 
         const response= {
             status: "success",
@@ -40,28 +40,29 @@ router.post('/notes', (req, res) => {
     });
 
 
-    router.delete('/notes/:id', function(req, res) {
-        readTheFile(path.join(__dirname, "./db/db.json"), 'utf-8', (err, data) => {
-          res.json(JSON.parse(data))
-          if (err){
-            console.log(err)
-          }
-          // console.log('File data:', data);
-          let notes= JSON.parse(data);
-          notes.splice(req.params.id, 1)
-          console.log(notes)
-          let notesJSON= JSON.stringify(notes);
-          console.log(notesJSON)
-          fs.writeFile(path.join(__dirname, "../db/db.json"), notesJSON, (err) => {
-            if (err) {
-               console.log(err);
-            }
-            console.log('Your note has been deleted!')
-          //   // return notesJSON
-          })
+    // router.delete('/notes/:id', function(req, res) {
+
+    //     // readTheFile(path.join(__dirname, "./db/db.json"), 'utf-8', (err, data) => {
+    //     //   res.json(JSON.parse(data))
+    //     //   if (err){
+    //     //     console.log(err)
+    //     //   }
+    //     //   // console.log('File data:', data);
+    //     //   let notes= JSON.parse(data);
+    //     //   notes.splice(req.params.id, 1)
+    //     //   console.log(notes)
+    //     //   let notesJSON= JSON.stringify(notes);
+    //     //   console.log(notesJSON)
+    //     //   fs.writeFile(path.join(__dirname, "./db/db.json"), notesJSON, (err) => {
+    //     //     if (err) {
+    //     //        console.log(err);
+    //     //     }
+    //     //     console.log('Your note has been deleted!')
+    //     //   //   // return notesJSON
+    //     //   })
   
-        })
-      })
+    //     })
+    //   })
   
  
 //    router.delete(`/api/notes/:id`, (req,res) => {
