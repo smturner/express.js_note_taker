@@ -4,7 +4,7 @@ const fs = require('fs');
 const db = require('../db/db.json')
 const path = require('path')
 // const api = require('./routes/notes')
-const { readTheFile, getNotes } = require('../helpers/fsUtils.js')
+const { readTheFile, getNotes } = require('../helpers/fsUtils')
 var shortid = require('shortid'); 
 // const notes = require('./routes/notes')
 
@@ -18,7 +18,7 @@ router.get('/notes', (req, res) => {
    }
 )});
 
-router.post('/', (req, res) => {
+router.post('/notes', (req, res) => {
     // console.log(`${req.method} request received to add a new note`)
     const {title, text} = req.body;
     if (title && text) {
@@ -42,7 +42,7 @@ router.post('/', (req, res) => {
     });
 
 
-    router.delete('/:id', function(req, res) {
+    router.delete('/notes/:id', function(req, res) {
         readTheFile(path.join(__dirname, "./db/db.json"), 'utf-8', (err, data) => {
           res.json(JSON.parse(data))
           if (err){
@@ -54,7 +54,7 @@ router.post('/', (req, res) => {
           console.log(notes)
           let notesJSON= JSON.stringify(notes);
           console.log(notesJSON)
-          fs.writeFile(path.join(__dirname, "./db/db.json"), notesJSON, (err) => {
+          fs.writeFile(path.join(__dirname, "../db/db.json"), notesJSON, (err) => {
             if (err) {
                console.log(err);
             }
