@@ -16,14 +16,16 @@ const getNotes = (content, file) => {
     });
   };
   
-  const saveNotes = (destination, content) =>
+  const saveNotes = (destination, content) => {
     writeTheFile(destination, JSON.stringify(content, null, 1), (err) => {
     if (err){
       console.error(err);
     }else {
       console.info(`\nData written to ${destination}`)
     }
-  });
+  })
+};
+
 
 
 module.exports = { readTheFile, getNotes, saveNotes };
