@@ -1,4 +1,7 @@
 const fs = require('fs');
+const util= require('util');
+
+const readTheFile = util.promisify(fs.readFile)
 
 const readAndAppend = (content, file) => {
     fs.readFile(file, 'utf8', (err, data) => {
@@ -22,4 +25,4 @@ const readAndAppend = (content, file) => {
   });
 
 
-module.exports = { readAndAppend };
+module.exports = { readTheFile, readAndAppend, writeToFile };

@@ -2,9 +2,10 @@ const express = require('express');
 const fs = require('fs');
 const db = require('./db/db.json')
 const path = require('path')
-const api = require('./routes/index.js')
+// const api = require('./routes/notes')
 const { readAndAppend } = require('./helpers/fsUtils')
 var shortid = require('shortid'); 
+// const notes = require('./routes/notes')
 
 
 const app = express()
@@ -13,7 +14,7 @@ const PORT = process.env.PORT || 3001;
 //this is middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/api', api);
+// app.use('/api', notes);
 app.use(express.static('public'));
 
 
@@ -60,8 +61,8 @@ app.post('/api/notes', (req, res) => {
   app.delete(`/api/notes/:id`, (req,res) => {
     let savedNote = fs.readFile('./db/db.json', 'utf8');
     savedNote=JSON.parse(savedNote);
-    // let noteId = req.params.note_id;
-    // let deletedNote= savedNote.filter(note => note.note_id !=noteId)
+    // let noteId = req.params.id;
+    // let deletedNote= savedNote.filter(note => note.id !=noteId)
     // console.log(deletedNote)
 
     res.send ('delete note')
