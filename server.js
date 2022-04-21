@@ -30,7 +30,7 @@ app.get('/api/notes', (req, res) => {
   readTheFile('./db/db.json', "utf8", (err, data) => {
     res.json(JSON.parse(data))
     if (err) throw err;
-    console.log(data)
+    // console.log(data)
    }
 )});
 
@@ -44,14 +44,14 @@ app.post('/api/notes', (req, res) => {
             id: shortid.generate()
             
         };
-        console.log(newNote)
+        // console.log(newNote)
         getNotes(newNote, './db/db.json');
 
         const response= {
             status: "success",
             body: newNote,
         };
-        console.log(response)
+        // console.log(response)
         res.status(201).json(response);
     }else{
         res.status(500).json('Error in posting new note')
@@ -60,19 +60,22 @@ app.post('/api/notes', (req, res) => {
 
     app.delete('/api/notes/:id', function(req, res) {
       readTheFile(path.join(__dirname, "./db/db.json"), 'utf-8', (err, data) => {
+        res.json(JSON.parse(data))
         if (err){
           console.log(err)
         }
-        console.log('File data:', data);
+        // console.log('File data:', data);
         let notes= JSON.parse(data);
         notes.splice(req.params.id, 1)
+        console.log(notes)
         let notesJSON= JSON.stringify(notes);
+        console.log(notesJSON)
         fs.writeFile(path.join(__dirname, "./db/db.json"), notesJSON, (err) => {
           if (err) {
-            return console.log(err);
+             console.log(err);
           }
-          console.log('Success!', notesJSON)
-          return notesJSON
+          console.log('Your note has been deleted!')
+        //   // return notesJSON
         })
 
       })
