@@ -7,6 +7,7 @@ const express = require('express');
 // var shortid = require('shortid'); 
 // const notes = require('./routes/notes')
 const htmlRoutes = require('./routes/htmlRoutes');
+const notesRoutes = require('./routes/notesRoutes')
 
 
 const app = express()
@@ -16,8 +17,11 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // app.use('/api', notes);
-app.use('/', htmlRoutes)
+
 app.use(express.static('public'));
+app.use('/', htmlRoutes);
+app.use('/api', notesRoutes)
+
 
 app.listen(PORT, ()=> {
   console.log(`App listening at http://localhost:${PORT}`)

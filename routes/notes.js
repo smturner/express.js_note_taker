@@ -3,10 +3,8 @@ const router = express.Router()
 const fs = require('fs');
 const db = require('../db/db.json')
 const path = require('path')
-// const api = require('./routes/notes')
 const { readTheFile, getNotes } = require('../helpers/fsUtils')
 var shortid = require('shortid'); 
-// const notes = require('./routes/notes')
 
 
 // router.use('../db/db.json', db)
