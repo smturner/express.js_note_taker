@@ -3,7 +3,7 @@ const fs = require('fs');
 const db = require('./db/db.json')
 const path = require('path')
 // const api = require('./routes/notes')
-const { readAndAppend } = require('./helpers/fsUtils')
+const { readTheFile, getNotes } = require('./helpers/fsUtils')
 var shortid = require('shortid'); 
 // const notes = require('./routes/notes')
 
@@ -27,7 +27,7 @@ res.sendFile(path.join(__dirname, './public/notes.html'))
 });
 
 app.get('/api/notes', (req, res) => {
-   fs.readFile('./db/db.json', "utf8", (err, data) => {
+  readTheFile('./db/db.json', "utf8", (err, data) => {
     res.json(JSON.parse(data))
     if (err) throw err;
     console.log(data)
@@ -45,7 +45,7 @@ app.post('/api/notes', (req, res) => {
             
         };
         console.log(newNote)
-        readAndAppend(newNote, './db/db.json');
+        getNotes(newNote, './db/db.json');
 
         const response= {
             status: "success",
@@ -58,16 +58,16 @@ app.post('/api/notes', (req, res) => {
     }
     });
 
-  app.delete(`/api/notes/:id`, (req,res) => {
-    let savedNote = fs.readFile('./db/db.json', 'utf8');
-    savedNote=JSON.parse(savedNote);
-    // let noteId = req.params.id;
-    // let deletedNote= savedNote.filter(note => note.id !=noteId)
-    // console.log(deletedNote)
+//   app.delete(`/api/notes/:id`, (req,res) => {
+//     let savedNote = fs.readFile('./db/db.json', 'utf8');
+//     savedNote=JSON.parse(savedNote);
+//     // let noteId = req.params.id;
+//     // let deletedNote= savedNote.filter(note => note.id !=noteId)
+//     // console.log(deletedNote)
 
-    res.send ('delete note')
+//     res.send ('delete note')
 
-  })
+//   })
 
 
 

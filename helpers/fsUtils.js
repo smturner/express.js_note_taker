@@ -2,21 +2,22 @@ const fs = require('fs');
 const util= require('util');
 
 const readTheFile = util.promisify(fs.readFile)
+const writeTheFile = util.promisify(fs.writeFile)
 
-const readAndAppend = (content, file) => {
+const getNotes = (content, file) => {
     fs.readFile(file, 'utf8', (err, data) => {
       if (err) {
         console.error(err);
       } else {
         const parsedData = JSON.parse(data);
         parsedData.push(content);
-        writeToFile(file, parsedData);
+        saveNotes(file, parsedData);
       }
     });
   };
   
-  const writeToFile = (destination, content) =>
-    fs.writeFile(destination, JSON.stringify(content, null, 1), (err) => {
+  const saveNotes = (destination, content) =>
+    writeTheFile(destination, JSON.stringify(content, null, 1), (err) => {
     if (err){
       console.error(err);
     }else {
@@ -25,4 +26,4 @@ const readAndAppend = (content, file) => {
   });
 
 
-module.exports = { readTheFile, readAndAppend, writeToFile };
+module.exports = { readTheFile, getNotes, saveNotes };
