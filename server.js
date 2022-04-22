@@ -1,14 +1,6 @@
 const express = require('express');
-// const fs = require('fs');
-// const db = require('./db/db.json')
-
-// const path = require('path')
-// const { readTheFile, getNotes } = require('./helpers/fsUtils')
-// var shortid = require('shortid'); 
-// const notes = require('./routes/notes')
 const htmlRoutes = require('./routes/htmlRoutes');
 const notesRoutes = require('./routes/notesRoutes')
-
 
 const app = express()
 const PORT = process.env.PORT || 3001;
@@ -16,13 +8,9 @@ const PORT = process.env.PORT || 3001;
 //this is middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use('/api', notes);
 app.use('/api', notesRoutes);
 app.use(express.static('public'));
 app.use('/', htmlRoutes);
-
-
-
 
 app.listen(PORT, ()=> {
   console.log(`App listening at http://localhost:${PORT}`)

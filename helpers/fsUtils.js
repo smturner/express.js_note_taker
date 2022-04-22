@@ -4,6 +4,7 @@ const util= require('util');
 const readTheFile = util.promisify(fs.readFile)
 const writeTheFile = util.promisify(fs.writeFile)
 
+// const noteTaker
 const getNotes = (content, file) => {
     readTheFile(file, 'utf8', (err, data) => {
       if (err) {
@@ -26,14 +27,23 @@ const getNotes = (content, file) => {
   })
 };
 
-const removeNotes = (id) => {
-  return this.getNotes()
-    .then (notes => notes.filter(note => note.id != id))
-    .then(fileteredNotes => this.write(fileteredNotes));
-     
-  // .then( (notes) => notes.filter((note) => note.id !=id))
-  // .then((updatedNotes) => {(saveNotes('./db/db.json', updatedNotes))}
+// const removeNotes = (id) => {
+//   readTheFile("./db/db.json", 'utf8', (err, data) => {
+//     if (err) {
+//       console.error(err);
+//     } else {    
+//       (notes => notes.filter(note => note.id != id))
+//     // console.log(remr)
+//     (fileteredNotes => this.write(fileteredNotes));
+//     }
+//   // .then( (notes) => notes.filter((note) => note.id !=id))
+//   // .then((updatedNotes) => {(saveNotes('./db/db.json', updatedNotes))}
 
-  }
-  console.log(getNotes)
-module.exports = { readTheFile, getNotes, saveNotes, removeNotes };
+//   }
+//   )}
+
+
+//   console.log(removeNotes())
+//   console.log(getNotes)
+
+module.exports = { readTheFile, getNotes, saveNotes };

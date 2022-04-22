@@ -1,24 +1,45 @@
-# express.js_note_taker
+ # Note Taker  
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
 
-1. create server.js file
-        -import all your required dependencies 
-        -const app = express()
-        -***Make sure to set it up with heroku depoyment
-        -set body parsing, static middleware, route middleware
-        -code that starts your server(app.listen) 
+## Description
+This project is a note taking app where you are able to write, save, and delete the notes right on the deployed webpage. This application uses Express.js back end and will save and retrieve note data from JSON file.
 
-2. create a routes folder
-    -create a 'GET' route for '/notes' that returns the 'notes.html' file
-    -create a GET route for '*' that returns 'index.html' file
-    -create a GET route for '/api/notes' that returns all saved notes as JSON
-    -create a POST route for '/api/notes' that saves a new note to the db.json file
-    -create a delete route for '/api/ntoes/:id" that deletes a note form the db.json file (bonus requirement)
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [Questions](#questions)
+- [License](#license)  
 
-3. create helper functions that manage saving and retrieving notes from the db.json file
-    -create a getNotes() function that returns all the saved notes from the db.json file
-    -create a saveNote() function that savees a new note to the db.json file and returns the new note as a JSON
-    -create a deleteNote() function that deletes a note form the db.json file and returns a sucess message
+## Installation
+You will need to run npm i to install the requried third party packages and require file system, util, and path which are built in packages.
 
-4. integrate your helper functions into the routes (use the functions in your get and post routes)
+## Usage
+This application is run using the web browser.
+<ul>
+<li> Use either the given url (found at the bottom of this page), or open up your integrated terminal and launch the app on your local server.</li>
+<li>Once the application is open you will see the homepage, click get started, which will take you to the notes page.</li>
+<li>Add a title for your note in the "Note Title" section, and below that add the note you would like to remember, then click the save icon in the top right corner of the screen.</li>
+<li>This will add the note to the left hand side of the screen and open up a space to add another note.</li>
+<li>If you would like to see a previous note you wrote, click on it and it will show up on the right side of the screen. Here you can edit the note if you need. If you are looking at a note but would like to start a new note, click the plus in the top right hand corner of the screen. </li>
+<li>If you would like to delete a note, click the trash can and your note will be deleted</li>
+<li>If the page is refreshed, the notes will stay on the page. </li>
+</ul>
 
-5. test the routes to ensure that they're working
+<img src= "./assets/photo2.png">
+
+## Links to Application
+<a href="https://github.com/smturner/express.js_note_taker">GitHub Repo</a>
+
+<a href= ">
+
+## Questions  
+If you have any questions about this project, please email me directly at turnersarah228@gmail.com.
+
+You can view more of my projects at https://github.com/smturner.
+
+## License
+Copyright (c) 2022 Sarah Turner
+
+This application is licensed by MIT. For more information on this license, visit <a href= "(https://opensource.org/licenses/MIT)">Open Source MIT</a>.  
