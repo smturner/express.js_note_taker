@@ -7,7 +7,7 @@ const express = require('express');
 // var shortid = require('shortid'); 
 // const notes = require('./routes/notes')
 const htmlRoutes = require('./routes/htmlRoutes');
-const notesRoutes = require('./routes/notes')
+const notesRoutes = require('./routes/notesRoutes')
 
 
 const app = express()

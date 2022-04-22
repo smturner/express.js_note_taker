@@ -5,7 +5,7 @@ const readTheFile = util.promisify(fs.readFile)
 const writeTheFile = util.promisify(fs.writeFile)
 
 const getNotes = (content, file) => {
-    fs.readFile(file, 'utf8', (err, data) => {
+    readTheFile(file, 'utf8', (err, data) => {
       if (err) {
         console.error(err);
       } else {
@@ -26,6 +26,14 @@ const getNotes = (content, file) => {
   })
 };
 
+const removeNotes = (id) => {
+  return this.getNotes()
+    .then (notes => notes.filter(note => note.id != id))
+    .then(fileteredNotes => this.write(fileteredNotes));
+     
+  // .then( (notes) => notes.filter((note) => note.id !=id))
+  // .then((updatedNotes) => {(saveNotes('./db/db.json', updatedNotes))}
 
-
-module.exports = { readTheFile, getNotes, saveNotes };
+  }
+  console.log(getNotes)
+module.exports = { readTheFile, getNotes, saveNotes, removeNotes };
