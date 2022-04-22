@@ -1,10 +1,14 @@
+//required packages
 const fs = require('fs');
 const util= require('util');
 
+//variables for writing and reading the files returning in a promise object
 const readTheFile = util.promisify(fs.readFile)
 const writeTheFile = util.promisify(fs.writeFile)
 
-// const noteTaker
+//function that reads the file, then creates it into a JavaScript object and then pushes the data back to the file. 
+
+
 const getNotes = (content, file) => {
     readTheFile(file, 'utf8', (err, data) => {
       if (err) {
@@ -17,6 +21,7 @@ const getNotes = (content, file) => {
     });
   };
   
+  //function that writes the data onto the file
   const saveNotes = (destination, content) => {
     writeTheFile(destination, JSON.stringify(content, null, 1), (err) => {
     if (err){
@@ -27,6 +32,7 @@ const getNotes = (content, file) => {
   })
 };
 
+//function to delete notes that is not working currently
 // const removeNotes = (id) => {
 //   readTheFile("./db/db.json", 'utf8', (err, data) => {
 //     if (err) {
