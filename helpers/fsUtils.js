@@ -32,24 +32,5 @@ const getNotes = (content, file) => {
   })
 };
 
-//function to delete notes that is not working currently
-// const removeNotes = (id) => {
-//   readTheFile("./db/db.json", 'utf8', (err, data) => {
-//     if (err) {
-//       console.error(err);
-//     } else {    
-//       (notes => notes.filter(note => note.id != id))
-//     // console.log(remr)
-//     (fileteredNotes => this.write(fileteredNotes));
-//     }
-//   // .then( (notes) => notes.filter((note) => note.id !=id))
-//   // .then((updatedNotes) => {(saveNotes('./db/db.json', updatedNotes))}
-
-//   }
-//   )}
-
-
-//   console.log(removeNotes())
-//   console.log(getNotes)
 
 module.exports = { readTheFile, getNotes, saveNotes };

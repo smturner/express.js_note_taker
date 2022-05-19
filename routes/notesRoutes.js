@@ -1,7 +1,7 @@
 //Required packages
 const router = require('express').Router();
 const db = require('../db/db.json')
-const { readTheFile, getNotes, } = require('../helpers/fsUtils')
+const { readTheFile, getNotes, saveNotes } = require('../helpers/fsUtils')
 var shortid = require('shortid'); 
 
 //gets the notes file
@@ -34,18 +34,20 @@ router.post('/notes', (req, res) => {
     }
     });
 
-    // router.delete('/notes/:id', function(req, res) {
-    //     removeNotes(req.params.id).then (() =>{
-    //                 res.json({ok:true})
-                 
+    //delete route to delete notes
+    router.delete('/notes/:id', (req,res) => {
+        const noteId = req.params.id;
+        console.log(noteId)
+        readTheFile('./db/db.json')
+        .then((data) => JSON.parse(data))
+        .then((json) => {
+            const result = json.filter((note) => note.id !== noteId);
+        saveNotes('./db/db.json', result);
+        res.json(`Item ${noteId} has been deleted`) 
+        })
 
-    //     })    .catch ( (err) =>
-    //         console.log(err))
-          
+    })
 
-    
-
-    // })
 
     module.exports=router;
 
